@@ -35,6 +35,10 @@ var specialChars = prompt(
 
 var uniqueCharObj = cleanString(specialChars);
 
+var pw = generatePassword(numChars, includeCapitalization, includeNumbers, uniqueCharObj);
+
+console.log(pw);
+
 // Function to remove all non special characters, spaces and return only unique special characters
 function cleanString(charString) {
 
@@ -53,12 +57,34 @@ function cleanString(charString) {
 }
 
 
-function generatePassword(pwLength, capitalization, numbers, charsToInclude) {
-  var charsInPassword = "abcdefghijklmnopqrstuvwxyz";
+function generatePassword(pwLength, capitalization, numbers, specialChars) {
+  var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+  var upperAlphabet;
+  var numberCharacters;
+  var specialCharacers = specialChars.join()
+
   if (capitalization) {
-    charsInPassword = charsInPassword + charsInPassword.toUpperCase();
+    upperAlphabet = lowerAlphabet.toUpperCase();
   }
   if (numbers) {
-    charsInPassword = charsInPassword + "1234567890";
+    numberCharacters = "1234567890";
+  }
+
+  getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters, specialCharacers);
+
+  return generatedPassword;
+}
+
+function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters, specialCharacers) {
+  var charsInPassword = lowerAlphabet + upperAlphabet + numberCharacters + specialCharacers;
+  var charObject = charsInPassword.split('');
+  var generatedPassword;
+
+  for (i = 0; i < 4; i++) {
+    for (j = 0; j < 0; j++) {
+
+    }
+    index = Math.floor(Math.random() * (charObject.length));
+    generatedPassword = generatedPassword + charObject[index];
   }
 }
