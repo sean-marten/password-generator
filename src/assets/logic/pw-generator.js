@@ -23,6 +23,11 @@ var includeCapitalization = confirm(
   "Would you like to include capital letters?"
 );
 
+// Retrieves whether or not the user wants numbers, no need for validation
+var includeNumbers = confirm(
+  "Would you like to include numbers?"
+);
+
 // Prompt retrieves special characters from the user
 var specialChars = prompt(
   "Which special characters would you like to include? (!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
@@ -45,4 +50,15 @@ function cleanString(charString) {
     }
   }
   return uniqueChars;
+}
+
+
+function generatePassword(pwLength, capitalization, numbers, charsToInclude) {
+  var charsInPassword = "abcdefghijklmnopqrstuvwxyz";
+  if (capitalization) {
+    charsInPassword = charsInPassword + charsInPassword.toUpperCase();
+  }
+  if (numbers) {
+    charsInPassword = charsInPassword + "1234567890";
+  }
 }
