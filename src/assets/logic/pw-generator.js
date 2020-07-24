@@ -23,9 +23,26 @@ var includeCapitalization = confirm(
   "Would you like to include capital letters?"
 );
 
-// Retrieves which special characters the user wants, validates that with the given selection in the prompt
-
-
+// Prompt retrieves special characters from the user
 var specialChars = prompt(
   "Which special characters would you like to include? (!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
-).split('');
+).trim().toLowerCase();
+
+var uniqueCharObj = cleanString(specialChars);
+
+// Function to remove all non special characters, spaces and return only unique special characters
+function cleanString(charString) {
+
+  var unwantedChars = "abcdefghijklmnopqrstuvwxyz1234567890 ".split('');
+  var uniqueChars = [];
+
+  for (var i = 0; i < unwantedChars.length; i++) {
+    charString = charString.split(unwantedChars[i]).join('');
+  }
+  for (var i = 0; i < charString.length; i++) {
+    if (!(uniqueChars.includes(charString[i]))) {
+      uniqueChars.push(charString[i]);
+    }
+  }
+  return uniqueChars;
+}
