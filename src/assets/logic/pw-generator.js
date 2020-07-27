@@ -77,6 +77,7 @@ function cleanString() {
   return uniqueSpecialChars.join("");
 }
 
+// Method to decide what is going to be included in the password
 function generatePassword() {
   var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
   var upperAlphabet = "";
@@ -98,14 +99,14 @@ function generatePassword() {
   return generatedPassword;
 }
 
-// Function to retrieve the correct number of random characters for each character type
+// Method to retrieve the correct number of random characters for each character type
 function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
   var randomPassword = "";
   var index;
-  var numCapitalLettersToInclude = (upperAlphabet.length = 0
+  var numCapitalLettersToInclude = (upperAlphabet.length === 0
     ? 0
     : Math.ceil(pwLength / 10));
-  var numNumbersToInclude = (numberCharacters.length = 0
+  var numNumbersToInclude = (numberCharacters.length === 0
     ? 0
     : Math.ceil(pwLength / 10));
   var numSpecialCharsToInclude = uniqueSpecialChars.length;
@@ -128,11 +129,13 @@ function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
       numChars: numNumbersToInclude,
     },
   ];
+  console.log(passwordChars)
 
   for (j = 0; j < passwordChars.length; j++) {
     for (i = 0; i < passwordChars[j].numChars; i++) {
       index = Math.floor(Math.random() * passwordChars[j].charStr.length);
       randomPassword = randomPassword + passwordChars[j].charStr[index];
+      console.log(j, i, randomPassword)
     }
   }
 
@@ -141,11 +144,12 @@ function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
   return randomPassword;
 }
 
+// Method to shuffle the characters of the password randomly
 function shuffleChars(unrefinedPassword) {
   var refinedPassword = "";
   var pwArray = Array.from(unrefinedPassword);
   var ctr = pwArray.length;
-  
+
   for (i = 0; i < ctr; i++) {
     index = Math.floor(Math.random() * pwArray.length);
     refinedPassword = refinedPassword + pwArray[index];
