@@ -16,6 +16,7 @@ alert(`Your password is ${userPassword}`);
 // Method to prompt user for password requirements
 function promptUser() {
   var validPwLength = false;
+  var validNumSpecialChars = false;
 
   // Gets input of number of chars and validates it.
   while (!validPwLength) {
@@ -33,18 +34,30 @@ function promptUser() {
     }
   }
 
+  var maxNumSpecialChars = Math.ceil(pwLength / 5);
+
   // Retrieves whether or not the user wants capital letters, no need for validation
   includeCapitalization = confirm("Would you like to include capital letters?");
 
   // Retrieves whether or not the user wants numbers, no need for validation
   includeNumbers = confirm("Would you like to include numbers?");
 
-  // Prompt retrieves special characters from the user
-  rawSpecialChars = prompt(
-    "Which special characters would you like to include? (!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
-  )
-    .trim()
-    .toLowerCase();
+  while (!validNumSpecialChars) {
+    // Prompt retrieves special characters from the user
+    rawSpecialChars = prompt(
+      `Which special characters would you like to include (max number of special chars for a ${pwLength} character long password is ${maxNumSpecialChars}?` +
+        "(!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
+    )
+      .trim()
+      .toLowerCase();
+  }
+  if (rawSpecialChars.length <= maxNumSpecialChars) {
+    validNumSpecialChars = true;
+  } else {
+    alert(
+      `You may only have a maximum of ${maxNumSpecialChars} number of special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`
+    );
+  }
 }
 
 // Function to remove all non special characters, spaces and return only unique special characters
