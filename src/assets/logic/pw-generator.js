@@ -34,29 +34,30 @@ function promptUser() {
     }
   }
 
-  var maxNumSpecialChars = Math.ceil(pwLength / 5);
-
   // Retrieves whether or not the user wants capital letters, no need for validation
   includeCapitalization = confirm("Would you like to include capital letters?");
 
   // Retrieves whether or not the user wants numbers, no need for validation
   includeNumbers = confirm("Would you like to include numbers?");
 
+  var maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
+
+  // Prompt retrieves special characters from the user and validates it
   while (!validNumSpecialChars) {
-    // Prompt retrieves special characters from the user
+    
     rawSpecialChars = prompt(
-      `Which special characters would you like to include (max number of special chars for a ${pwLength} character long password is ${maxNumSpecialChars}?` +
+      `Which special characters would you like to include (max number of special chars for a ${pwLength} character long password is ${maxNumSpecialChars})? ` +
         "(!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
     )
       .trim()
       .toLowerCase();
-  }
-  if (rawSpecialChars.length <= maxNumSpecialChars) {
-    validNumSpecialChars = true;
-  } else {
-    alert(
-      `You may only have a maximum of ${maxNumSpecialChars} number of special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`
-    );
+    if (rawSpecialChars.length <= maxNumSpecialChars) {
+      validNumSpecialChars = true;
+    } else {
+      alert(
+        `You may only have a maximum of ${maxNumSpecialChars} special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`
+      );
+    }
   }
 }
 
@@ -127,7 +128,6 @@ function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
       numChars: numNumbersToInclude,
     },
   ];
-  console.log(passwordChars);
 
   for (j = 0; j < passwordChars.length; j++) {
     for (i = 0; i < passwordChars[j].numChars; i++) {
@@ -143,16 +143,13 @@ function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
 
 function shuffleChars(unrefinedPassword) {
   var refinedPassword = "";
-  console.log(unrefinedPassword);
-  console.log(typeof unrefinedPassword);
   var pwArray = Array.from(unrefinedPassword);
   var ctr = pwArray.length;
+  
   for (i = 0; i < ctr; i++) {
     index = Math.floor(Math.random() * pwArray.length);
     refinedPassword = refinedPassword + pwArray[index];
-    console.log(pwArray);
     pwArray.splice(index, 1);
-    console.log(pwArray);
   }
 
   return refinedPassword;
