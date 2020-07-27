@@ -32,7 +32,7 @@ var specialChars = prompt(
   .trim()
   .toLowerCase();
 
-var uniqueCharStr = cleanString(specialChars).join();
+var uniqueCharStr = cleanString(specialChars).join('');
 
 var pw = generatePassword(
   numChars,
@@ -43,8 +43,7 @@ var pw = generatePassword(
 
 var refinedPw = randomizeChars(pw);
 
-console.log(pw);
-console.log(refinedPw);
+alert(`Your password is ${refinedPw}`);
 
 // Function to remove all non special characters, spaces and return only unique special characters
 function cleanString(charString) {
@@ -64,8 +63,8 @@ function cleanString(charString) {
 
 function generatePassword(pwLength, capitalization, numbers, specialChars) {
   var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-  var upperAlphabet;
-  var numberCharacters;
+  var upperAlphabet = '';
+  var numberCharacters = '';
   var specialCharacers = specialChars;
 
   if (capitalization) {
@@ -80,7 +79,7 @@ function generatePassword(pwLength, capitalization, numbers, specialChars) {
     upperAlphabet,
     numberCharacters,
     specialCharacers,
-    pwLength
+    pwLength,
   );
 
   return generatedPassword;
@@ -99,9 +98,11 @@ function getRandomChars(
     numberCharacters,
     specialCharacers,
   ];
+  console.log(charsInPassword[3]);
+  console.log(typeof(charsInPassword[3]));
   var generatedPassword = '';
   var index;
-  for (i = 0; i < charsInPassword.length; i++) {
+  for (i = 0; i < charsInPassword.length - 1; i++) {
     for (
       j = 0;
       j <
@@ -113,6 +114,10 @@ function getRandomChars(
       index = Math.floor(Math.random() * charsInPassword[i].length);
       generatedPassword = generatedPassword + charsInPassword[i][index];
     }
+  }
+
+  for (i = 0; i < charsInPassword[3].length; i++) {
+    generatedPassword = generatedPassword + charsInPassword[3][i];
   }
 
   if (generatedPassword.length > pwLength) {
@@ -129,9 +134,14 @@ function randomizeChars(unrefinedPassword) {
   var refinedPassword = '';
   console.log(unrefinedPassword);
   console.log(typeof(unrefinedPassword));
-  for (i = 0; i < unrefinedPassword.length; i++) {
-    index = Math.floor(Math.random() * unrefinedPassword.length);
-    refinedPassword = refinedPassword + unrefinedPassword[index];
+  var pwArray = Array.from(unrefinedPassword)
+  var ctr = pwArray.length;
+  for (i = 0; i < ctr; i++) {
+    index = Math.floor(Math.random() * pwArray.length);
+    refinedPassword = refinedPassword + pwArray[index];
+    console.log(pwArray);
+    pwArray.splice(index, 1)
+    console.log(pwArray);
   }
 
   return refinedPassword;
