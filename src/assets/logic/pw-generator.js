@@ -1,38 +1,40 @@
-var correctNumChars = false;
-var correctChars = false;
+function promptUser() {
+  var correctNumChars = false;
+  var correctChars = false;
 
-// Gets input of number of chars and validates it.
-while (!correctNumChars) {
-  var numChars = parseInt(
-    prompt(
-      "How many characters would you like your password to be? (8-128 characters)"
-    )
-  );
-  if (numChars > 7 && numChars < 129) {
-    correctNumChars = true;
-  } else {
-    alert(
-      "Invalid input, please enter an integer between or including 8 and 128"
+  // Gets input of number of chars and validates it.
+  while (!correctNumChars) {
+    var numChars = parseInt(
+      prompt(
+        "How many characters would you like your password to be? (8-128 characters)"
+      )
     );
+    if (numChars > 7 && numChars < 129) {
+      correctNumChars = true;
+    } else {
+      alert(
+        "Invalid input, please enter an integer between or including 8 and 128"
+      );
+    }
   }
+
+  // Retrieves whether or not the user wants capital letters, no need for validation
+  var includeCapitalization = confirm(
+    "Would you like to include capital letters?"
+  );
+
+  // Retrieves whether or not the user wants numbers, no need for validation
+  var includeNumbers = confirm("Would you like to include numbers?");
+
+  // Prompt retrieves special characters from the user
+  var specialChars = prompt(
+    "Which special characters would you like to include? (!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
+  )
+    .trim()
+    .toLowerCase();
 }
 
-// Retrieves whether or not the user wants capital letters, no need for validation
-var includeCapitalization = confirm(
-  "Would you like to include capital letters?"
-);
-
-// Retrieves whether or not the user wants numbers, no need for validation
-var includeNumbers = confirm("Would you like to include numbers?");
-
-// Prompt retrieves special characters from the user
-var specialChars = prompt(
-  "Which special characters would you like to include? (!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
-)
-  .trim()
-  .toLowerCase();
-
-var uniqueCharStr = cleanString(specialChars).join('');
+var uniqueCharStr = cleanString(specialChars).join("");
 
 var pw = generatePassword(
   numChars,
@@ -63,8 +65,8 @@ function cleanString(charString) {
 
 function generatePassword(pwLength, capitalization, numbers, specialChars) {
   var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-  var upperAlphabet = '';
-  var numberCharacters = '';
+  var upperAlphabet = "";
+  var numberCharacters = "";
   var specialCharacers = specialChars;
 
   if (capitalization) {
@@ -79,7 +81,7 @@ function generatePassword(pwLength, capitalization, numbers, specialChars) {
     upperAlphabet,
     numberCharacters,
     specialCharacers,
-    pwLength,
+    pwLength
   );
 
   return generatedPassword;
@@ -99,8 +101,8 @@ function getRandomChars(
     specialCharacers,
   ];
   console.log(charsInPassword[3]);
-  console.log(typeof(charsInPassword[3]));
-  var generatedPassword = '';
+  console.log(typeof charsInPassword[3]);
+  var generatedPassword = "";
   var index;
   for (i = 0; i < charsInPassword.length - 1; i++) {
     for (
@@ -131,16 +133,16 @@ function getRandomChars(
 }
 
 function randomizeChars(unrefinedPassword) {
-  var refinedPassword = '';
+  var refinedPassword = "";
   console.log(unrefinedPassword);
-  console.log(typeof(unrefinedPassword));
-  var pwArray = Array.from(unrefinedPassword)
+  console.log(typeof unrefinedPassword);
+  var pwArray = Array.from(unrefinedPassword);
   var ctr = pwArray.length;
   for (i = 0; i < ctr; i++) {
     index = Math.floor(Math.random() * pwArray.length);
     refinedPassword = refinedPassword + pwArray[index];
     console.log(pwArray);
-    pwArray.splice(index, 1)
+    pwArray.splice(index, 1);
     console.log(pwArray);
   }
 
