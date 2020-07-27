@@ -1,16 +1,31 @@
+var numChars, includeCapitalization, includeNumbers, specialChars = promptUser();
+
+var uniqueCharStr = cleanString(specialChars).join("");
+
+var pw = generatePassword(
+  numChars,
+  includeCapitalization,
+  includeNumbers,
+  uniqueCharStr
+);
+
+var refinedPw = randomizeChars(pw);
+
+alert(`Your password is ${refinedPw}`);
+
+// Method to prompt user for password requirements
 function promptUser() {
-  var correctNumChars = false;
-  var correctChars = false;
+  var validNumChars = false;
 
   // Gets input of number of chars and validates it.
-  while (!correctNumChars) {
+  while (!validNumChars) {
     var numChars = parseInt(
       prompt(
         "How many characters would you like your password to be? (8-128 characters)"
       )
     );
     if (numChars > 7 && numChars < 129) {
-      correctNumChars = true;
+      validNumChars = true;
     } else {
       alert(
         "Invalid input, please enter an integer between or including 8 and 128"
@@ -32,20 +47,9 @@ function promptUser() {
   )
     .trim()
     .toLowerCase();
+
+    return numChars, includeCapitalization, includeNumbers, specialChars
 }
-
-var uniqueCharStr = cleanString(specialChars).join("");
-
-var pw = generatePassword(
-  numChars,
-  includeCapitalization,
-  includeNumbers,
-  uniqueCharStr
-);
-
-var refinedPw = randomizeChars(pw);
-
-alert(`Your password is ${refinedPw}`);
 
 // Function to remove all non special characters, spaces and return only unique special characters
 function cleanString(charString) {
