@@ -28,7 +28,7 @@ function main() {
   let pw = generatePassword();
   console.log(pw);
   password = shuffleChars(pw);
-  $popUp.textContent = password;
+  $popUp.textContent = `Password: ${password}`;
 }
 
 // Method to prompt user for password requirements

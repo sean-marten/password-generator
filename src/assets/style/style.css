@@ -8,7 +8,7 @@ body {
 
 .container {
     margin: 0 auto;
-    width: 25%;
+    width: 30%;
 }
 
 .title {
@@ -22,6 +22,7 @@ body {
     margin-bottom: 25px;
     border-radius: 10px;
     text-align: center;
+    font-size: small;
 }
 
 .generate {
