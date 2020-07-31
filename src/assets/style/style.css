@@ -21,6 +21,7 @@ body {
     padding: 7px;
     margin-bottom: 25px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .generate {
@@ -37,4 +38,9 @@ label {
 
 .button {
     text-align: center;
+}
+
+.error {
+    text-align: center;
+    color: darkred;
 }
