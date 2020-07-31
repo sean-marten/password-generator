@@ -1,4 +1,22 @@
+.container {
+    margin: 0 auto;
+    width: 20%;
+}
+
 .title {
-    text-align: center;
     font-size: 70px;
+    text-align: center;
+}
+
+.text-input {
+    width: 100%;
+    border-bottom: 1px solid lightblue;
+}
+
+label {
+    display: block;
+}
+
+.button {
+    text-align: center;
 }
