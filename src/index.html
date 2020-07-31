@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style/style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
     <title>Sean's Password Generator</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1 class="title">Sean's Password Generator</h1>
     <div class="container">
-        <input class="text-input" type="number" placeholder="Number of characters in password (8-128)" id="total" />
-        <input class="text-input" type="text" placeholder="Special characters you would like to include" id="total" />
-        <label>
-        <input type="checkbox" placeholder="Include capital letters?" id="total" />
+      <input
+        class="num-chars text-input"
+        type="number"
+        placeholder="Number of characters (8-128)"
+        id="total"
+      />
+      <input
+        class="special-chars text-input"
+        type="text"
+        placeholder="Special characters (!\#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
+        id="total"
+      />
+      <label>
+        <input
+          type="checkbox"
+          placeholder="Include capital letters?"
+          id="total"
+        />
         Include capital letters?
-        </label>
-        <label>
-            <input type="checkbox" placeholder="Include numbers?" id="total" />
-            Include numbers?
-        </label>
-        <div class="button">
-            <button id="submit">Calculate Tip</button>
-        </div>
+      </label>
+      <label>
+        <input type="checkbox" placeholder="Include numbers?" id="total" />
+        Include numbers?
+      </label>
+      <div class="button">
+        <button class="generate">Generate Password</button>
+      </div>
     </div>
-    
+
     <script src="./assets/logic/pw-generato.js"></script>
-</body>
+  </body>
 </html>

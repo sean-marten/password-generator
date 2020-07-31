@@ -1,7 +1,8 @@
-var pwLength;
-var includeCapitalization;
-var includeNumbers;
-var rawSpecialChars;
+let pwLength;
+let includeCapitalization;
+let includeNumbers;
+let rawSpecialChars;
+let $numChars = document.querySelector(".num-chars");
 
 promptUser();
 
