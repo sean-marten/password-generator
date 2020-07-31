@@ -129,13 +129,11 @@ function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
       numChars: numNumbersToInclude,
     },
   ];
-  console.log(passwordChars)
 
   for (j = 0; j < passwordChars.length; j++) {
     for (i = 0; i < passwordChars[j].numChars; i++) {
       index = Math.floor(Math.random() * passwordChars[j].charStr.length);
       randomPassword = randomPassword + passwordChars[j].charStr[index];
-      console.log(j, i, randomPassword)
     }
   }
 
