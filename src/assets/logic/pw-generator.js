@@ -12,6 +12,7 @@ const $nums = document.querySelector(".nums");
 const $generate = document.querySelector(".generate");
 const $errorNumChar = document.querySelector(".num-char-error");
 const $errorSpecialChar = document.querySelector(".special-char-error");
+const $popUp = document.querySelector(".modal-body");
 
 $generate.disabled = true;
 
@@ -27,7 +28,7 @@ function main() {
   let pw = generatePassword();
   console.log(pw);
   password = shuffleChars(pw);
-  alert('Your password is ' + password);
+  $popUp.textContent = password;
 }
 
 // Method to prompt user for password requirements
