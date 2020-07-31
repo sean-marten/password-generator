@@ -2,7 +2,13 @@ let pwLength;
 let includeCapitalization;
 let includeNumbers;
 let rawSpecialChars;
-let $numChars = document.querySelector(".num-chars");
+const $numChars = document.querySelector(".num-chars");
+const $specialChars = document.querySelector(".special-chars");
+const $capitalLetters = document.querySelector(".capital-letters");
+const $nums = document.querySelector(".nums");
+const $generate = document.querySelector(".generate");
+
+$generate.disabled = false;
 
 promptUser();
 
