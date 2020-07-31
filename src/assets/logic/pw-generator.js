@@ -1,5 +1,5 @@
-let pwLength = 0;
-let includeCapitalization;
+let pwLength;
+let includeCapitalization = false;
 let includeNumbers;
 let rawSpecialChars;
 const $error = document.querySelector(".error");
@@ -21,20 +21,34 @@ $numChars.addEventListener("keyup", validateNumChars);
 // Method to prompt user for password requirements
 function validateNumChars() {
   pwLength = parseInt($numChars.value);
-  console.log(pwLength);
   if (pwLength > 7 && pwLength < 129) {
     $generate.disabled = false;
     $error.textContent = "";
   } else {
+    $generate.disabled = true;
     $error.textContent = "Please enter a valid number of password characters! (8-128)";
   }
 }
 
-//   // Retrieves whether or not the user wants capital letters, no need for validation
-//   includeCapitalization = confirm("Would you like to include capital letters?");
+// Retrieves whether or not the user wants capital letters, no need for validation
+$capitalLetters.addEventListener("change", function(){
+  if (this.checked) {
+    includeCapitalization = true;
+  }
+  else {
+    includeCapitalization = false;
+  }
+});
 
-//   // Retrieves whether or not the user wants numbers, no need for validation
-//   includeNumbers = confirm("Would you like to include numbers?");
+// Retrieves whether or not the user wants numbers, no need for validation
+$nums.addEventListener("change", function(){
+  if (this.checked) {
+    includeNumbers = true;
+  }
+  else {
+    includeNumbers = false;
+  }
+});
 
 //   var maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
 
