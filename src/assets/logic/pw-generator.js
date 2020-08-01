@@ -16,9 +16,13 @@ const $popUp = document.querySelector(".modal-body");
 
 $generate.disabled = true;
 
-$numChars.addEventListener("keyup", validateNumChars);
+$numChars.addEventListener("keyup", function() {
+  pwLength = parseInt($numChars.value);
+});
 
-$specialChars.addEventListener("keyup", validateSpecialChars);
+$specialChars.addEventListener("keyup", function() {
+  rawSpecialChars = $specialChars.value.trim().toLowerCase();
+});
 
 $generate.addEventListener("click", main);
 
@@ -30,6 +34,25 @@ function main() {
   password = shuffleChars(pw);
   $popUp.textContent = `Password: ${password}`;
 }
+
+function validate() {
+    if (pwLength > 7 && pwLength < 129) {
+      maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
+      $generate.disabled = false;
+      $errorNumChar.textContent = "";
+      if (rawSpecialChars.length <= maxNumSpecialChars) {
+        $errorSpecialChar.textContent = "";
+        $generate.disabled = false;
+      } else {
+        $generate.disabled = true;
+        $errorSpecialChar.textContent = `You may only have a maximum of ${maxNumSpecialChars} special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`;
+      }
+    } else {
+      $generate.disabled = true;
+      $errorNumChar.textContent =
+        "Please enter a valid number of password characters! (8-128)";
+    }
+  }
 
 // Method to prompt user for password requirements
 function validateNumChars() {
