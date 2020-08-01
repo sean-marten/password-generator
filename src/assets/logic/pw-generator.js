@@ -18,10 +18,12 @@ $generate.disabled = true;
 
 $numChars.addEventListener("keyup", function() {
   pwLength = parseInt($numChars.value);
+  validate();
 });
 
 $specialChars.addEventListener("keyup", function() {
   rawSpecialChars = $specialChars.value.trim().toLowerCase();
+  validate();
 });
 
 $generate.addEventListener("click", main);
@@ -35,6 +37,7 @@ function main() {
   $popUp.textContent = `Password: ${password}`;
 }
 
+// Method to validate user prompted input
 function validate() {
     if (pwLength > 7 && pwLength < 129) {
       maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
@@ -53,45 +56,6 @@ function validate() {
         "Please enter a valid number of password characters! (8-128)";
     }
   }
-
-// Method to prompt user for password requirements
-function validateNumChars() {
-  pwLength = parseInt($numChars.value);
-  if (pwLength) {
-    maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
-    validateSpecialChars();
-  }
-  else {
-    $errorNumChar.textContent = "";
-    $errorSpecialChar.textContent = "";
-    return;
-  }
-  if (pwLength > 7 && pwLength < 129) {
-    $generate.disabled = false;
-    $errorNumChar.textContent = "";
-  } else {
-    $generate.disabled = true;
-    $errorNumChar.textContent =
-      "Please enter a valid number of password characters! (8-128)";
-  }
-}
-
-// Prompt retrieves special characters from the user and validates it
-function validateSpecialChars() {
-  rawSpecialChars = $specialChars.value.trim().toLowerCase();
-  if (rawSpecialChars && pwLength) {
-    if (rawSpecialChars.length <= maxNumSpecialChars) {
-      $errorSpecialChar.textContent = "";
-      $generate.disabled = false;
-    } else {
-      $generate.disabled = true;
-      $errorSpecialChar.textContent = `You may only have a maximum of ${maxNumSpecialChars} special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`;
-    }
-  }
-  else {
-    $errorSpecialChar.textContent = "";
-  }
-}
 
 // Retrieves whether or not the user wants capital letters, no need for validation
 $capitalLetters.addEventListener("change", function () {
