@@ -1,3 +1,4 @@
+// Declare all variables
 let pwLength;
 let includeCapitalization = false;
 let includeNumbers;
@@ -14,8 +15,10 @@ const $errorNumChar = document.querySelector(".num-char-error");
 const $errorSpecialChar = document.querySelector(".special-char-error");
 const $popUp = document.querySelector(".modal-body");
 
+// Default to disabled generate button upon load
 $generate.disabled = true;
 
+// Event listeners
 $numChars.addEventListener("keyup", function() {
   pwLength = parseInt($numChars.value);
   validate();
@@ -28,6 +31,7 @@ $specialChars.addEventListener("keyup", function() {
 
 $generate.addEventListener("click", main);
 
+// Main method to run generator
 function main() {
   uniqueSpecialChars = cleanString();
   console.log(uniqueSpecialChars);

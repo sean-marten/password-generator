@@ -3,12 +3,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(0deg, #303030, lightgray 80%) no-repeat;
-}
-
-.container {
-    margin: 0 auto;
-    width: 30%;
+    background: linear-gradient(0deg, #303030, lightgray 100%) no-repeat;
 }
 
 .title {
