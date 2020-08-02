@@ -33,10 +33,13 @@ $generate.addEventListener("click", main);
 
 // Main method to run generator
 function main() {
-  uniqueSpecialChars = cleanString();
-  console.log(uniqueSpecialChars);
+  if (rawSpecialChars.length > 0) {
+    uniqueSpecialChars = cleanString();
+  }
+  else {
+    uniqueSpecialChars = "";
+  }
   let pw = generatePassword();
-  console.log(pw);
   password = shuffleChars(pw);
   $popUp.textContent = `Password: ${password}`;
 }
@@ -47,6 +50,9 @@ function validate() {
       maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
       $generate.disabled = false;
       $errorNumChar.textContent = "";
+      if (!rawSpecialChars) {
+        rawSpecialChars = [];
+      }
       if (rawSpecialChars.length <= maxNumSpecialChars) {
         $errorSpecialChar.textContent = "";
         $generate.disabled = false;
