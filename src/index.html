@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="./assets/style/style.css" />
     <title>Ultimate Password Generator</title>
   </head>
+  <!-- Main body -->
   <body>
-      <br>
+    <br />
+    <!-- Title -->
     <h1 class="title">Ultimate Password Generator</h1>
-    <br>
-    <div class="container col-xs">
+    <br />
+    <!-- Input boxes -->
+    <section class="container col-xs">
       <input
         class="num-chars text-input"
         type="number"
@@ -59,7 +62,9 @@
       </div>
       <h3 class="error num-char-error"></h3>
       <h3 class="error special-char-error"></h3>
-    </div>
+    </section>
+    <!-- End of input boxes -->
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -72,7 +77,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Generated Password</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Generated Password
+            </h5>
             <button
               type="button"
               class="close"
@@ -82,14 +89,9 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-          </div>
+          <div class="modal-body"></div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-dismiss="modal"
-            >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
               Close
             </button>
           </div>
@@ -97,6 +99,9 @@
       </div>
     </div>
   </body>
+  <!-- End of main body -->
+
+  <!-- Javascript -->
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -113,4 +118,5 @@
     crossorigin="anonymous"
   ></script>
   <script src="./assets/logic/pw-generator.js"></script>
+  <!-- End of javascript -->
 </html>

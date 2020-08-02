@@ -1,42 +1,44 @@
-html, body {
-    height: 100%;
+/* UI Elements */
+html,
+body {
+  height: 100%;
 }
 
 body {
-    background: linear-gradient(0deg, #303030, lightgray 100%) no-repeat;
+  background: linear-gradient(0deg, #303030, lightgray 100%) no-repeat;
 }
 
 .title {
-    font-size: 70px;
-    text-align: center;
+  font-size: xx-large;
+  text-align: center;
 }
 
 .text-input {
-    width: 100%;
-    padding: 7px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: small;
-}
-
-.generate {
-    padding: 10px;
-    font-size: large;
-    border-radius: 10px;
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: small;
 }
 
 label {
-    font-size: x-large;
-    display: block;
-    margin-bottom: 25px;
+  font-size: x-large;
+  display: block;
+  margin-bottom: 25px;
+}
+
+.generate {
+  padding: 10px;
+  font-size: large;
+  border-radius: 10px;
 }
 
 .button {
-    text-align: center;
+  text-align: center;
 }
 
 .error {
-    text-align: center;
-    color: darkred;
+  text-align: center;
+  color: darkred;
 }

@@ -33,6 +33,7 @@ $generate.addEventListener("click", main);
 
 // Main method to run generator
 function main() {
+  // Only clean the string if it has input
   if (rawSpecialChars.length > 0) {
     uniqueSpecialChars = cleanString();
   }
