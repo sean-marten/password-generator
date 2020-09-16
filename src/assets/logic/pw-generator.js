@@ -19,12 +19,12 @@ const $popUp = document.querySelector(".modal-body");
 $generate.disabled = true;
 
 // Event listeners
-$numChars.addEventListener("keyup", function() {
+$numChars.addEventListener("keyup", function () {
   pwLength = parseInt($numChars.value);
   validate();
 });
 
-$specialChars.addEventListener("keyup", function() {
+$specialChars.addEventListener("keyup", function () {
   rawSpecialChars = $specialChars.value.trim().toLowerCase();
   validate();
 });
@@ -36,8 +36,7 @@ function main() {
   // Only clean the string if it has input
   if (rawSpecialChars.length > 0) {
     uniqueSpecialChars = cleanString();
-  }
-  else {
+  } else {
     uniqueSpecialChars = "";
   }
   let pw = generatePassword();
@@ -47,26 +46,15 @@ function main() {
 
 // Method to validate user prompted input
 function validate() {
-    if (pwLength > 7 && pwLength < 129) {
-      maxNumSpecialChars = Math.ceil(pwLength / 5); // Realistically, we don't want the whole password to be special characters
-      $generate.disabled = false;
-      $errorNumChar.textContent = "";
-      if (!rawSpecialChars) {
-        rawSpecialChars = [];
-      }
-      if (rawSpecialChars.length <= maxNumSpecialChars) {
-        $errorSpecialChar.textContent = "";
-        $generate.disabled = false;
-      } else {
-        $generate.disabled = true;
-        $errorSpecialChar.textContent = `You may only have a maximum of ${maxNumSpecialChars} special characters for a ${pwLength} character long password. Please re-enter a valid number of special characters.`;
-      }
-    } else {
-      $generate.disabled = true;
-      $errorNumChar.textContent =
-        "Please enter a valid number of password characters! (8-128)";
-    }
+  if (pwLength > 7 && pwLength < 129) {
+    $generate.disabled = false;
+    $errorNumChar.textContent = "";
+  } else {
+    $generate.disabled = true;
+    $errorNumChar.textContent =
+      "Please enter a valid number of password characters! (8-128)";
   }
+}
 
 // Retrieves whether or not the user wants capital letters, no need for validation
 $capitalLetters.addEventListener("change", function () {
@@ -128,12 +116,10 @@ function generatePassword() {
 function getRandomChars(lowerAlphabet, upperAlphabet, numberCharacters) {
   var randomPassword = "";
   var index;
-  var numCapitalLettersToInclude = (upperAlphabet.length === 0
-    ? 0
-    : Math.ceil(pwLength / 10));
-  var numNumbersToInclude = (numberCharacters.length === 0
-    ? 0
-    : Math.ceil(pwLength / 10));
+  var numCapitalLettersToInclude =
+    upperAlphabet.length === 0 ? 0 : Math.ceil(pwLength / 10);
+  var numNumbersToInclude =
+    numberCharacters.length === 0 ? 0 : Math.ceil(pwLength / 10);
   var numSpecialCharsToInclude = uniqueSpecialChars.length;
   var numNormalLettersToInclude =
     pwLength -
