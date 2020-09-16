@@ -8,9 +8,8 @@ body {
   background: linear-gradient(0deg, #303030, lightgray 100%) no-repeat;
 }
 
-.title {
-  font-size: xx-large;
-  text-align: center;
+hr {
+  border: 1px solid black;
 }
 
 .text-input {

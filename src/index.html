@@ -10,47 +10,53 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/style/style.css" />
-    <title>Ultimate Password Generator</title>
+    <title>Super Secure Password Generator</title>
   </head>
   <!-- Main body -->
   <body>
-    <br />
-    <!-- Title -->
-    <h1 class="title">Ultimate Password Generator</h1>
-    <br />
     <!-- Input boxes -->
-    <section class="container col-xs">
-      <input
-        class="num-chars text-input"
-        type="number"
-        placeholder="Number of characters (8-128)"
-        id="total"
-      />
-      <input
-        class="special-chars text-input"
-        type="text"
-        placeholder="Special characters (!\#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
-        id="total"
-      />
-      <label>
+    <section class="container text-center col-xs">
+      <br />
+      <!-- Title -->
+      <h1 class="title">Super Secure Password Generator</h1>
+      <br />
+      <div class="row">
         <input
-          class="capital-letters"
-          type="checkbox"
-          placeholder="Include capital letters?"
+          class="num-chars text-input"
+          type="number"
+          placeholder="Number of characters (8-128)"
           id="total"
         />
-        Include capital letters?
-      </label>
-      <label>
+      </div>
+      <div class="row">
         <input
-          class="nums"
-          type="checkbox"
-          placeholder="Include numbers?"
+          class="special-chars text-input"
+          type="text"
+          placeholder="Special characters (!\#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)"
           id="total"
         />
-        Include numbers?
-      </label>
-      <div class="button">
+      </div>
+      <div class="row justify-content-center">
+        <label class="mr-3">
+          <input
+            class="capital-letters"
+            type="checkbox"
+            placeholder="Include capital letters?"
+            id="total"
+          />
+          Include capital letters?
+        </label>
+        <label class="ml-3">
+          <input
+            class="nums"
+            type="checkbox"
+            placeholder="Include numbers?"
+            id="total"
+          />
+          Include numbers?
+        </label>
+      </div>
+      <div class="button row justify-content-center">
         <button
           type="button"
           class="generate btn btn-dark"
@@ -60,6 +66,7 @@
           Generate Password
         </button>
       </div>
+
       <h3 class="error num-char-error"></h3>
       <h3 class="error special-char-error"></h3>
     </section>
